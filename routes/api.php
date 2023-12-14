@@ -14,10 +14,14 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "api" middleware group. Make something great!
 |
 */
+Route::post('/login', [UserController::class, 'login']);
 
-Route::get('/users', [UserController::class, 'index']);
-Route::post('/users', [UserController::class, 'create']);
-Route::get('/users/{id}', [UserController::class, 'show']);
-Route::patch('/users/{id}', [UserController::class, 'update']);
-Route::delete('/users/{id}', [UserController::class, 'destroy']);
 
+Route::middleware('auth:api')->group(function () {
+  Route::get('/logout', [UserController::class, 'logout']);
+  Route::get('/users', [UserController::class, 'index']);
+  Route::post('/users', [UserController::class, 'create']);
+  Route::get('/users/{id}', [UserController::class, 'show']);
+  Route::patch('/users/{id}', [UserController::class, 'update']);
+  Route::delete('/users/{id}', [UserController::class, 'destroy']);
+});

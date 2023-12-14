@@ -2,12 +2,14 @@
 
 namespace App\Models;
 
+use DateTimeInterface;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class User extends Model
+class User extends Authenticatable
 {
-  use HasFactory;
+  use HasFactory, HasApiTokens;
 
   public function orders()
   {
@@ -37,5 +39,6 @@ class User extends Model
   protected $hidden = [
     'created_at',
     'updated_at',
+    'api_token'
   ];
 }

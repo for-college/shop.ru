@@ -13,4 +13,12 @@ class Category extends Model
   {
     return $this->hasMany(Product::class);
   }
+
+  protected $fillable = [
+    'name',
+  ];
+  protected $hidden = [
+    'created_at',
+    'updated_at',
+  ];
 }
