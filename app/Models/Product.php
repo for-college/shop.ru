@@ -23,4 +23,17 @@ class Product extends Model
   {
     return $this->hasMany(Cart::class);
   }
+
+  protected $fillable = [
+    'name',
+    'price',
+    'quantity',
+    'description',
+    'photo',
+    'category_id'
+  ];
+  protected $hidden = [
+    'created_at',
+    'updated_at',
+  ];
 }

@@ -2,9 +2,7 @@
 
 namespace App\Http\Requests;
 
-use Illuminate\Foundation\Http\FormRequest;
-
-class RoleRequest extends FormRequest
+class RoleRequest extends ApiRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,7 +21,7 @@ class RoleRequest extends FormRequest
   {
     return [
       'name' => 'required|min:3|max:255',
-      'code' => 'required|min:1|max:255'
+      'code' => 'required|min:1|max:255|unique:roles'
     ];
   }
 }

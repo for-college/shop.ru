@@ -2,16 +2,14 @@
 
 namespace App\Http\Requests;
 
-use Illuminate\Foundation\Http\FormRequest;
-
-class RoleUpdateRequest extends FormRequest
+class RoleUpdateRequest extends ApiRequest
 {
     /**
      * Determine if the user is authorized to make this request.
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -23,7 +21,7 @@ class RoleUpdateRequest extends FormRequest
   {
     return [
       'name' => 'min:3|max:255',
-      'code' => 'min:1|max:255'
+      'code' => 'min:1|max:255|unique:roles'
     ];
   }
 }

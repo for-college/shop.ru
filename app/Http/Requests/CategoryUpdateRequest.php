@@ -2,16 +2,14 @@
 
 namespace App\Http\Requests;
 
-use Illuminate\Foundation\Http\FormRequest;
-
-class CategoryUpdateRequest extends FormRequest
+class CategoryUpdateRequest extends ApiRequest
 {
     /**
      * Determine if the user is authorized to make this request.
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +20,7 @@ class CategoryUpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
-          'name' => 'min:3|max:255',
+          'name' => 'min:3|max:255|unique:categories',
         ];
     }
 }
